@@ -42,6 +42,7 @@ describe('Tests for when movie is found', () => {
 
     cy.get('div.movie').should('exist');
     cy.get('div.movie > h3').should('exist');
+    cy.get('div.movie > h3').contains('Star Wars').should('exist');
     cy.get('div.movie > img').should('exist');
   });
 
