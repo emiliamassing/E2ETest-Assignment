@@ -10,6 +10,7 @@ describe('Tests for input type text', () => {
 
   it('Should be able to type in input', () => {
     cy.get('input').should('exist');
-    cy.get('input').type('Go to the stable').should('have.value', 'Go to the stable');
+    cy.get('input').type('Star Wars').should('have.value', 'Star Wars');
   });
+
 });
