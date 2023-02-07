@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "axios": "^1.2.0"
+  },
+  "scripts": {
+    "cypress": "npx cypress open"
   }
 }

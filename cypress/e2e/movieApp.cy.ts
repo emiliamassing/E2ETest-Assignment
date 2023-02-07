@@ -1,5 +1,11 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
-  })
-})
+beforeEach(() => {
+  cy.visit("/");
+});
+
+describe('Tests for input type text', () => {
+
+  it('Should check if input exists', () => {
+    cy.get('input#searchText').should("exist");
+  });
+
+});
