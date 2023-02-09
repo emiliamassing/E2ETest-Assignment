@@ -34,7 +34,6 @@ describe('Tests for searching for a movie', () => {
     cy.get('input#searchText').type('Star Wars').should('have.value', 'Star Wars');
 
     cy.get('button').should('have.id', 'search').and('exist');
-
     cy.get('button#search').click();
   });
 
