@@ -1,5 +1,3 @@
-import { should } from "chai";
-
 beforeEach(() => {
   cy.visit("/");
 });
@@ -18,6 +16,17 @@ describe('Tests for input field', () => {
 
 });
 
+describe('Tests for button', () => {
+
+  it('Should check if button exists', () => {
+    cy.get('button').should('exist');
+  });
+
+  it('Should have correct id', () => {
+    cy.get('button').should('have.id', 'search');
+  });
+
+});
 
 describe('Tests for searching for a movie', () => {
 
@@ -25,7 +34,7 @@ describe('Tests for searching for a movie', () => {
     cy.get('input#searchText').type('Star Wars').should('have.value', 'Star Wars');
 
     cy.get('button').should('have.id', 'search').and('exist');
-    
+
     cy.get('button#search').click();
   });
 
