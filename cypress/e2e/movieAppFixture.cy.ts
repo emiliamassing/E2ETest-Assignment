@@ -47,7 +47,7 @@ describe('Tests for searching for a movie', () => {
     
         cy.get('p').contains('Inga sökresultat att visa').should('exist');
     });
-    
+
 });
 
 describe('Tests for when movie is found', () => {
@@ -62,4 +62,15 @@ describe('Tests for when movie is found', () => {
         cy.get('div.movie > img').should('exist');
     });
 
+});
+
+describe('Should display error', () => {
+
+    it('Should get error code', () => {
+        cy.intercept('GET', 'http://omdbapi.com/?apikey=145f57ef&s=*', {fixture: "errorResponse"}).as('errorResponse');
+
+        cy.get('input').type('<p></p>').should('have.value', '<p></p>');
+        cy.get('button').click();
+    });
+    
 });
