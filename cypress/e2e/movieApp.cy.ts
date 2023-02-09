@@ -16,7 +16,18 @@ describe('Tests for input field', () => {
 
 });
 
-describe('Tests for button', () => {
+describe('Tests for trying to submit empty field', () => {
+  
+  it('Should show error message when field is empty', () => {
+    cy.get('input').should('contain', '');
+    cy.get('button').click();
+
+    cy.get('p').contains('Inga sökresultat att visa').should('exist');
+  });
+
+});
+
+describe('Tests for submit button', () => {
 
   it('Should check if button exists', () => {
     cy.get('button').should('exist');
@@ -40,7 +51,7 @@ describe('Tests for searching for a movie', () => {
   it('Should not find movie', () => {
     cy.get('input#searchText').type(' ').should('have.value', ' ');
 
-    cy.get('button#search').click();
+    cy.get('button').click();
 
     cy.get('p').contains('Inga sökresultat att visa').should('exist');
   });

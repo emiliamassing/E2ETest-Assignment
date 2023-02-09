@@ -13,7 +13,20 @@ beforeEach(() => {
         cy.wait('@omdbFixture').its('request.url').should('contain', 'Attack%20Of%20The%20Clones');
     });
 
-});*/
+});
+
+describe('Tests for trying to submit empty field', () => {
+  
+    it('Should show error message when field is empty', () => {
+      cy.intercept('GET', 'http://omdbapi.com/?apikey=145f57ef&s=*', {fixture: "emptyOmdb"}).as('emptyOmdb');
+
+      cy.get('input').should('contain', '');
+      cy.get('button').click();
+  
+      cy.get('p').contains('Inga sökresultat att visa').should('exist');
+    });
+  
+});
 
 describe('Tests for searching for a movie', () => {
 
@@ -30,13 +43,13 @@ describe('Tests for searching for a movie', () => {
         cy.intercept('GET', 'http://omdbapi.com/?apikey=145f57ef&s=*', {fixture: "emptyOmdb"}).as('emptyOmdb');
 
         cy.get('input#searchText').type(' ').should('have.value', ' ');
-        cy.get('button#search').click();
+        cy.get('button').click();
     
         cy.get('p').contains('Inga sökresultat att visa').should('exist');
     });
 });
 
-/*describe('Tests for when movie is found', () => {
+describe('Tests for when movie is found', () => {
 
     it('Should create correct elements', () => {
         cy.intercept('GET', 'http://omdbapi.com/?apikey=145f57ef&s=*', {fixture: "omdb"}).as('omdbFixture');
